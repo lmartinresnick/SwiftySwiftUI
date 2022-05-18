@@ -21,12 +21,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import SwiftUI
 
-public extension Array {
-    mutating func appendIfNotNil(_ element: Element?) {
-        if let element = element {
-            self.append(element)
-        }
+public struct ResignKeyboardOnDragGesture: ViewModifier {
+    private var gesture = DragGesture().onChanged { _ in
+        UIApplication.shared.endEditing(true)
+    }
+    
+    public func body(content: Content) -> some View {
+        content.simultaneousGesture(gesture)
+    }
+}
+
+public extension View {
+    func resignKeyboardOnDragGesture() -> some View {
+        return modifier(ResignKeyboardOnDragGesture())
     }
 }

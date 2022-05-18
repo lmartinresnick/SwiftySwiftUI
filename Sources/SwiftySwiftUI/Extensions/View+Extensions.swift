@@ -39,7 +39,7 @@ public extension View {
     ///     }
     ///     .embedInNavigationView()
     ///
-    public func embedInNavigationView() -> some View {
+    func embedInNavigationView() -> some View {
         NavigationView { self }
     }
     /// An `AnyView` wrapper
@@ -52,7 +52,7 @@ public extension View {
     ///     }
     ///     .eraseToAnyView()
     ///
-    public func eraseToAnyView() -> AnyView {
+    func eraseToAnyView() -> AnyView {
         AnyView(self)
     }
     /// Positions this view within an invisible frame with the same width and height
@@ -64,7 +64,7 @@ public extension View {
     ///             .frame(50)
     ///     }
     ///
-    public func frame(_ dimensions: CGFloat) -> some View {
+    func frame(_ dimensions: CGFloat) -> some View {
         self
             .frame(width: dimensions, height: dimensions)
     }
@@ -73,7 +73,7 @@ public extension View {
     ///   - condition: The condition to evaluate.
     ///   - transform: The transform to apply to the source `View`.
     /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
-    @ViewBuilder public func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
         if condition {
             transform(self)
         } else {

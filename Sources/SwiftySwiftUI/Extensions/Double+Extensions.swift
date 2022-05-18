@@ -24,7 +24,7 @@
 import Foundation
 
 public extension Double {
-    public func formatCurrency() -> String {
+    func formatCurrency() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
         let number = NSNumber(value: self)

@@ -21,12 +21,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import SwiftUI
 
-public extension Array {
-    mutating func appendIfNotNil(_ element: Element?) {
-        if let element = element {
-            self.append(element)
-        }
+public struct VisualBlurEffectContainer: UIViewRepresentable {
+    public let blurEffect: UIBlurEffect.Style
+    
+    public init(with blurEffect: UIBlurEffect.Style) {
+        self.blurEffect = blurEffect
+    }
+    
+    public func makeUIView(context: Context) -> UIVisualEffectView {
+        UIVisualEffectView(effect: blurEffect)
+    }
+    
+    public func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        
     }
 }

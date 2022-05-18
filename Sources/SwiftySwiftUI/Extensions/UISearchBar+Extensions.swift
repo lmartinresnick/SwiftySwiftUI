@@ -21,12 +21,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-public extension Array {
-    mutating func appendIfNotNil(_ element: Element?) {
-        if let element = element {
-            self.append(element)
-        }
+public extension UISearchBar {
+    func setCenteredPlaceholder() {
+        let width = UIScreen.main.bounds.width
+        
+        let offset = UIOffset(horizontal: width / 4, vertical: 0)
+        self.setPositionAdjustment(offset, for: .search)
+    }
+    
+    var cancelButton: UIButton? {
+        let cancelButtonKey: String = "cancelButton"
+        return self.value(forKey: cancelButtonKey) as? UIButton
     }
 }
