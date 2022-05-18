@@ -23,8 +23,8 @@
 
 import Foundation
 
-extension Double {
-    func formatCurrency() -> String {
+public extension Double {
+    public func formatCurrency() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
         let number = NSNumber(value: self)

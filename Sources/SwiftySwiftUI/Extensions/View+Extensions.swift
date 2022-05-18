@@ -24,7 +24,7 @@
 import SwiftUI
 
 @available(iOS 13.0, tvOS 13.0, macOS 10.15, *)
-extension View {
+public extension View {
     /// A `NavigationView` wrapper
     ///
     /// The following example presents three links to color detail
@@ -39,7 +39,7 @@ extension View {
     ///     }
     ///     .embedInNavigationView()
     ///
-    func embedInNavigationView() -> some View {
+    public func embedInNavigationView() -> some View {
         NavigationView { self }
     }
     /// An `AnyView` wrapper
@@ -52,7 +52,7 @@ extension View {
     ///     }
     ///     .eraseToAnyView()
     ///
-    func eraseToAnyView() -> AnyView {
+    public func eraseToAnyView() -> AnyView {
         AnyView(self)
     }
     /// Positions this view within an invisible frame with the same width and height
@@ -64,7 +64,7 @@ extension View {
     ///             .frame(50)
     ///     }
     ///
-    func frame(_ dimensions: CGFloat) -> some View {
+    public func frame(_ dimensions: CGFloat) -> some View {
         self
             .frame(width: dimensions, height: dimensions)
     }
@@ -73,7 +73,7 @@ extension View {
     ///   - condition: The condition to evaluate.
     ///   - transform: The transform to apply to the source `View`.
     /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+    @ViewBuilder public func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
         if condition {
             transform(self)
         } else {

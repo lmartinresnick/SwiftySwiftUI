@@ -23,10 +23,10 @@
 
 import UIKit
 
-extension UIApplication {
-    static let safeArea = UIApplication.shared.keyWindow?.safeAreaInsets
+public extension UIApplication {
+    public static let safeArea = UIApplication.shared.keyWindow?.safeAreaInsets
     
-    var keyWindow: UIWindow? {
+    public var keyWindow: UIWindow? {
         // Get connected scenes
         return UIApplication.shared.connectedScenes
             // Keep only active scenes, onscreen and visible to the user
@@ -39,7 +39,7 @@ extension UIApplication {
             .first(where: \.isKeyWindow)
     }
     
-    func endEditing(_ force: Bool) {
+    public func endEditing(_ force: Bool) {
         if #available(iOS 15.0, *) {
             let scenes = UIApplication.shared.connectedScenes
             let windowScene = scenes.first as? UIWindowScene
@@ -53,7 +53,7 @@ extension UIApplication {
         }
     }
     
-    func dismissKeyboard() {
+    public func dismissKeyboard() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

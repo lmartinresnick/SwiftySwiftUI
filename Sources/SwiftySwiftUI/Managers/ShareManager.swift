@@ -23,8 +23,8 @@
 
 import UIKit
 
-struct ShareManager {
-    static func shareToActivityVC(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
+public struct ShareManager {
+    public static func shareToActivityVC(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
         var activityItems: [Any] = []
 
         activityItems.appendIfNotNil(text)

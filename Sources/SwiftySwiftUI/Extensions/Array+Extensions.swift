@@ -23,8 +23,8 @@
 
 import Foundation
 
-extension Array {
-    mutating func appendIfNotNil(_ element: Element?) {
+public extension Array {
+    public mutating func appendIfNotNil(_ element: Element?) {
         if let element = element {
             self.append(element)
         }
