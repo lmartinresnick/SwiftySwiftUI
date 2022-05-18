@@ -28,12 +28,12 @@ public struct HapticFeedbackManager {
     /// Method to generate haptic feedback
     /// Pass in style to update default `medium` feedback
     ///
-    /// The following example demonstrats method with default feedback
+    /// The following example demonstrats method with default impact
     ///
     ///     HapticFeedbackManager.impactOccurred()
     ///
     ///
-    /// The following example demonstrats method with light feedback
+    /// The following example demonstrats method with light impact
     ///
     ///     HapticFeedbackManager.impactOccurred(with: .light)
     ///

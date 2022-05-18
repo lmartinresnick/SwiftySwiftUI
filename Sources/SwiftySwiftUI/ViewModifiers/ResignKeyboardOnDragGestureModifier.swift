@@ -23,7 +23,7 @@
 
 import SwiftUI
 
-public struct ResignKeyboardOnDragGesture: ViewModifier {
+public struct ResignKeyboardOnDragGestureModifier: ViewModifier {
     private var gesture = DragGesture().onChanged { _ in
         UIApplication.shared.endEditing(true)
     }
@@ -35,6 +35,8 @@ public struct ResignKeyboardOnDragGesture: ViewModifier {
 
 public extension View {
     func resignKeyboardOnDragGesture() -> some View {
-        return modifier(ResignKeyboardOnDragGesture())
+        return modifier(ResignKeyboardOnDragGestureModifier())
     }
 }
+
+extension NSObject: @unchecked Sendable {}
