@@ -53,9 +53,9 @@ public struct PlaceholderTextViewContainer: UIViewRepresentable {
     }
     
     public class Coordinator: NSObject, UITextViewDelegate {
-        let parent: PlaceholderTextView
+        let parent: PlaceholderTextViewContainer
         
-        public init(_ parent: PlaceholderTextView) {
+        public init(_ parent: PlaceholderTextViewContainer) {
             self.parent = parent
         }
         

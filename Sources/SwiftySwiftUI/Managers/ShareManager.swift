@@ -22,7 +22,8 @@
 //  THE SOFTWARE.
 
 import UIKit
-
+// swiftlint:disable line_length
+@available(iOS 13.0, tvOS 13.0, macOS 10.15, *)
 public struct ShareManager {
     public static func shareToActivityVC(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
         var activityItems: [Any] = []
