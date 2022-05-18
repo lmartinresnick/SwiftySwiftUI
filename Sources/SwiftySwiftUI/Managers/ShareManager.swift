@@ -20,3 +20,18 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+
+import UIKit
+
+struct ShareManager {
+    static func shareToActivityVC(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
+        var activityItems: [Any] = []
+
+        activityItems.appendIfNotNil(text)
+        activityItems.appendIfNotNil(url)
+        activityItems.appendIfNotNil(image)
+
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
+}

@@ -20,3 +20,24 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+
+import UIKit
+// swiftlint:disable line_length
+@available(iOS 13.0, *)
+public struct HapticFeedbackManager {
+    /// Method to generate haptic feedback
+    /// Pass in style to update default `medium` feedback
+    ///
+    /// The following example demonstrats method with default feedback
+    ///
+    ///     HapticFeedbackManager.impactOccurred()
+    ///
+    ///
+    /// The following example demonstrats method with light feedback
+    ///
+    ///     HapticFeedbackManager.impactOccurred(with: .light)
+    ///
+    public static func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
+        UIImpactFeedbackGenerator(style: style).impactOccurred()
+    }
+}
