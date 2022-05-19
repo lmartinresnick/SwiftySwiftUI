@@ -10,9 +10,7 @@ A Swift package for common SwiftUI components and helper methods.
 
 ## Installation
 
-The preferred way of installing SwiftySwiftUI is via the [Swift Package Manager](https://swift.org/package-manager/).
-
->Xcode 11 integrates with libSwiftPM to provide support for iOS, watchOS, macOS and tvOS platforms.
+Install SwiftySwiftUI via [Swift Package Manager](https://swift.org/package-manager/).
 
 1. In Xcode, open your project and navigate to **File** → **Swift Packages** → **Add Package Dependency...**
 2. Paste the repository URL `https://github.com/lmartinresnick/SwiftySwiftUI` and click **Next**.
@@ -64,9 +62,9 @@ extension View {
 }
 ```
 
-#### 1 : 1 Ratio Frame
+#### 1:1 Ratio Frame
 
-- Set `frame` with the same `width` and `height` (1:1 ratio)
+- Set `frame` with the same `width` and `height`
 
 ```swift
 Circle()
@@ -111,9 +109,9 @@ extension View {
 }
 ```
 
-#### if View Modifier
+#### Hidden View Modifier
 
-- Use an `if` condition to show/hide a view modifier
+- Use a `boolean` to show/hide a `View`
 
 ```swift
 Text("Error message!")
