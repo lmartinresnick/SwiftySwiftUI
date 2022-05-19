@@ -45,7 +45,7 @@ extension View {
 }
 ```
 
-#### `AnyView` Wrapper
+#### AnyView Wrapper
 
 - Instantly "erase" your `View` to `AnyView`
 
@@ -59,9 +59,81 @@ VStack {
 ```swift
 extension View {
     func eraseToAnyView() -> some View {
-        AnyView()
+        AnyView(self)
     }
 }
 ```
 
+#### 1 : 1 Ratio Frame
+
+- Set `frame` with the same `width` and `height` (1:1 ratio)
+
+```swift
+Circle()
+    .frame(50)
+```
+
+```swift
+extension View {
+    func frame(_ dimensions) -> some View {
+        self
+            .frame(width: dimensions, height: dimensions)
+    }
+}
+```
+
+#### if View Modifier
+
+- Use an `if` condition to show/hide a view modifier
+
+```swift
+@State private var usernameIsAvailable: Bool = false
+var body: some View {
+    Button("Check username") {
+        // API call to check if username is available
+    }
+    .padding()
+    .if(usernameIsAvailable) { view in
+        view.background(Color.green)
+    }
+}
+```
+
+```swift
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+```
+
+#### if View Modifier
+
+- Use an `if` condition to show/hide a view modifier
+
+```swift
+    Text("Error message!")
+        .isHidden(false)
+        
+    Text("Error message!")
+        .isHidden(true)
+```
+
+```swift
+extension View {
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+        if hidden {
+            if !remove {
+                self.hidden()
+            }
+        } else {
+            self
+        }
+    }
+}
+```
 

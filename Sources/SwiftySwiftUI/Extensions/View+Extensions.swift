@@ -87,7 +87,7 @@ public extension View {
     ///         @State private var usernameIsAvailable: Bool = false
     ///         var body: some View {
     ///             Button("Check username") {
-    ///                 // API Call to check if username is available
+    ///                 // API call to check if username is available
     ///             }
     ///             .padding()
     ///             .if(usernameIsAvailable) { view in
