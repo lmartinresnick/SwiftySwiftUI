@@ -21,6 +21,7 @@ Install SwiftySwiftUI via [Swift Package Manager](https://swift.org/package-mana
 
 #### NavigationView Wrapper
 
+-`.embedInNavigationView()`
 - Instantly embed your `View` in `NavigationView`
 
 ```swift
@@ -35,16 +36,9 @@ VStack {
 .embedInNavigationView()
 ```
 
-```swift
-extension View {
-    func embedInNavigationView() -> some View {
-        NavigationView { self }
-    }
-}
-```
-
 #### AnyView Wrapper
 
+- `.eraseToAnyView()`
 - Instantly "erase" your `View` to `AnyView`
 
 ```swift
@@ -54,16 +48,9 @@ VStack {
 .eraseToAnyView()
 ```
 
-```swift
-extension View {
-    func eraseToAnyView() -> some View {
-        AnyView(self)
-    }
-}
-```
-
 #### 1:1 Ratio Frame
 
+- `.frame(_:)`
 - Set `frame` with the same `width` and `height`
 
 ```swift
@@ -82,6 +69,7 @@ extension View {
 
 #### if View Modifier
 
+- `.if(_:transform:)`
 - Use an `if` condition to show/hide a view modifier
 
 ```swift
@@ -97,84 +85,38 @@ var body: some View {
 }
 ```
 
-```swift
-extension View {
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            self
-        }
-    }
-}
-```
-
 #### Hidden View Modifier
 
+- `.isHidden(_:remove:)`
 - Use a `boolean` to show/hide a `View`
 
 ```swift
 Text("Error message!")
-    .isHidden(false)
+    .isHidden(true)
         
 Text("Error message!")
-    .isHidden(true)
-```
-
-```swift
-extension View {
-    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
-        if hidden {
-            if !remove {
-                self.hidden()
-            }
-        } else {
-            self
-        }
-    }
-}
+    .isHidden(false)
 ```
 
 #### Loading View Modifier
 
+- `.loadingStyle(state:loadingContent:)`
 - Use a `@State` property to display a loading view
 
 ```swift
-@State private var fetchingAPI: Bool = true
+@State private var isFetchingAPI: Bool = true
 var body: some View {
-    VStack {
-        AsyncImage(url: viewModel.url)
-    }
-    .loadingStyle(state: fetchingAPI) {
-        CustomLoadingView()
-    }
+    AsyncImage(url: viewModel.url)
+        .loadingStyle(state: isFetchingAPI) {
+            CustomLoadingView()
+        }
 }
 
-```
-
-```swift
-/// Boolean to show loading view
-private let isLoading: Bool
-/// View to show when `isLoading = true`
-private let loadingContent: LoadingContent
-/// Initializer to set properties
-init(state isLoading: Bool, @ViewBuilder loadingContent: () -> LoadingContent) {
-    self.isLoading = isLoading
-    self.loadingContent = loadingContent()
-}
-
-func body(content: Content) -> some View {
-    if isLoading {
-        loadingContent
-            .padding()
-    } else {
-        content
-    }
-}
 ```
 
 #### BottomSheet
 
+- `.bottomSheet(isPresented:showBottomSheet:content:)`
 - Customizable modal presented from the bottom of the screen
 - Interacts the same way as `.sheet`, i.e. use a `@State` boolean to show `BottomSheet`
 
