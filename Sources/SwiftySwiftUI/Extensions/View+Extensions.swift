@@ -27,7 +27,7 @@ import SwiftUI
 public extension View {
     /// A `NavigationView` wrapper
     ///
-    /// The following example presents three links to color detail
+    /// Example:
     ///
     ///     VStack {
     ///         List {
@@ -39,40 +39,64 @@ public extension View {
     ///     }
     ///     .embedInNavigationView()
     ///
+    ///
     func embedInNavigationView() -> some View {
         NavigationView { self }
     }
     /// An `AnyView` wrapper
-    /// Transform any `SwiftUI.View` to `AnyView` instantly
+    /// Transform any `View` to `AnyView` instantly
     ///
-    /// The following example presents text
+    /// Example:
     ///
     ///     VStack {
     ///         Text("Hello World")
     ///     }
     ///     .eraseToAnyView()
     ///
+    ///
     func eraseToAnyView() -> AnyView {
         AnyView(self)
     }
     /// Positions this view within an invisible frame with the same width and height
     ///
-    /// The following example presents a circle
+    /// - Parameters:
+    ///    - dimensions: CGFloat value of view width and height
     ///
-    ///     VStack {
-    ///         Circle()
-    ///             .frame(50)
-    ///     }
+    /// Example:
+    ///
+    ///     Circle()
+    ///        .frame(50)
+    ///
     ///
     func frame(_ dimensions: CGFloat) -> some View {
         self
             .frame(width: dimensions, height: dimensions)
     }
     /// Applies the given transform if the given condition evaluates to `true`.
+    ///
+    ///
     /// - Parameters:
     ///   - condition: The condition to evaluate.
     ///   - transform: The transform to apply to the source `View`.
     /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
+    ///
+    ///
+    /// Example:
+    ///
+    ///     struct SomeView: View {
+    ///         @State private var usernameIsAvailable: Bool = false
+    ///         var body: some View {
+    ///             Button("Check username") {
+    ///                 // API Call to check if username is available
+    ///             }
+    ///             .padding()
+    ///             .if(usernameIsAvailable) { view in
+    ///                view.background(Color.green)
+    ///             }
+    ///         }
+    ///     }
+    ///
+    ///
     @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
         if condition {
             transform(self)
@@ -83,19 +107,21 @@ public extension View {
     
     /// Hide or show the view based on a boolean value.
     ///
+    /// - Parameters:
+    ///  - hidden: Set to `false` to show the view. Set to `true` to hide the view.
+    ///  - remove: Boolean value indicating whether or not to remove the view.
+    ///
     /// Example for visibility:
     ///
-    ///     Text("Label")
-    ///         .isHidden(true)
+    ///     Text("Error message!")
+    ///         .isHidden(false)
     ///
     /// Example for complete removal:
     ///
-    ///     Text("Label")
+    ///     Text("Error message!")
     ///         .isHidden(true, remove: true)
     ///
-    /// - Parameters:
-    ///   - hidden: Set to `false` to show the view. Set to `true` to hide the view.
-    ///   - remove: Boolean value indicating whether or not to remove the view.
+    ///
     @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
         if hidden {
             if !remove {

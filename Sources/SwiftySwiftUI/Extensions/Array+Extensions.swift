@@ -24,6 +24,26 @@
 import Foundation
 
 public extension Array {
+    /// Append item to array if `Element != nil`
+    ///
+    /// - Parameters:
+    ///    - element: Optional `Element`
+    ///
+    /// Example with nil item:
+    ///
+    ///     var array: [String] = []
+    ///     let text: String? = nil
+    ///
+    ///     array.appendIfNotNil(text)
+    ///
+    /// Example with non-nil item
+    ///
+    ///     var array: [Int] = []
+    ///     let int: Int = 10
+    ///
+    ///     array.appendIfNotNil(int)
+    ///
+    ///
     mutating func appendIfNotNil(_ element: Element?) {
         if let element = element {
             self.append(element)

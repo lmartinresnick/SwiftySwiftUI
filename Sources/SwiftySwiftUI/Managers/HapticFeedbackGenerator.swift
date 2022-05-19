@@ -22,22 +22,25 @@
 //  THE SOFTWARE.
 
 import UIKit
+
+public protocol ImpactGenerator {
+    func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle)
+}
 // swiftlint:disable line_length
-@available(iOS 13.0, *)
-public struct HapticFeedbackManager {
+public struct HapticFeedbackGenerator: ImpactGenerator {
     /// Method to generate haptic feedback
     /// Pass in style to update default `medium` feedback
     ///
-    /// The following example demonstrats method with default impact
+    /// Example with default imapact `medium`
     ///
-    ///     HapticFeedbackManager.impactOccurred()
+    ///     HapticFeedbackGenerator.impactOccurred()
     ///
     ///
-    /// The following example demonstrats method with light impact
+    /// Example with `light` impact
     ///
-    ///     HapticFeedbackManager.impactOccurred(with: .light)
+    ///     HapticFeedbackGenerator.impactOccurred(with: .light)
     ///
-    public static func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
+    public func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
         UIImpactFeedbackGenerator(style: style).impactOccurred()
     }
 }

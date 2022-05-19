@@ -23,17 +23,19 @@
 
 import UIKit
 // swiftlint:disable line_length
-@available(iOS 13.0, tvOS 13.0, macOS 10.15, *)
-public class ShareManager {
-    public static let shared = ShareManager()
-    public func shareToActivityVC(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
-        var activityItems: [Any] = []
+public protocol ActivitySharing {
+    func shareWithActivityController(image: UIImage?, text: String?, url: URL?)
+}
 
+public struct ShareManager {
+    public func shareWithActivityController(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
+        var activityItems: [Any] = []
+        
         activityItems.appendIfNotNil(text)
         activityItems.appendIfNotNil(url)
         activityItems.appendIfNotNil(image)
-
+        
         let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+        UIApplication.getTopViewController()?.present(activityVC, animated: true, completion: nil)
     }
 }
