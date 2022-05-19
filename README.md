@@ -38,7 +38,7 @@ VStack {
 
 #### AnyView Wrapper
 
-- `.eraseToAnyView()`
+-  `.eraseToAnyView()`
 - Instantly "erase" your `View` to `AnyView`
 
 ```swift
@@ -50,7 +50,7 @@ VStack {
 
 #### 1:1 Ratio Frame
 
-- `.frame(_:)`
+-  `.frame(_:)`
 - Set `frame` with the same `width` and `height`
 
 ```swift
