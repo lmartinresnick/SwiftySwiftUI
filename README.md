@@ -141,27 +141,31 @@ extension View {
 
 ```swift
 @State private var fetchingAPI: Bool = true
-VStack {
-    AsyncImage(url: viewModel.url)
+var body: some View {
+    VStack {
+        AsyncImage(url: viewModel.url)
+    }
+    .loadingStyle(state: fetchingAPI) {
+        CustomLoadingView()
+    }
 }
-.loadingStyle(state: fetchingAPI) {
-    CustomLoadingView()
-}
+
 ```
 
 ```swift
+/// Boolean to show loading view
 private let isLoading: Bool
 /// View to show when `isLoading = true`
 private let loadingContent: () -> LoadingContent
 /// Initializer to set properties
-init(state isLoading: Bool, loadingContent: @escaping () -> LoadingContent) {
+init(state isLoading: Bool, @ViewBuilder loadingContent: () -> LoadingContent) {
     self.isLoading = isLoading
-    self.loadingContent = loadingContent
+    self.loadingContent = loadingContent()
 }
 
 func body(content: Content) -> some View {
     if isLoading {
-        loadingContent()
+        loadingContent
             .padding()
     } else {
         content
