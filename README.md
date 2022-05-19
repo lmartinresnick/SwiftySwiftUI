@@ -17,7 +17,7 @@ The preferred way of installing SwiftUIX is via the [Swift Package Manager](http
 1. In Xcode, open your project and navigate to **File** → **Swift Packages** → **Add Package Dependency...**
 2. Paste the following repository URL and click **Next**.
 ```swift
-https://github.com/lmartinresnick/SwiftySwiftUI
+https:/$()/github.com/lmartinresnick/SwiftySwiftUI
 ```
 3. For **Rules**, select **Branch** (with branch set to `main`).
 4. Click **Finish**.
