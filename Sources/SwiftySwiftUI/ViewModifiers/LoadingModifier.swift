@@ -28,11 +28,11 @@ public struct LoadingModifier<LoadingContent: View>: ViewModifier {
     /// Boolean to show loading view
     private let isLoading: Bool
     /// View to show when `isLoading = true`
-    private let loadingContent: () -> LoadingContent
+    private let loadingContent: LoadingContent
     /// Initializer to set properties
-    public init(state isLoading: Bool, loadingContent: @escaping () -> LoadingContent) {
+    public init(state isLoading: Bool, @ViewBuilder loadingContent: () -> LoadingContent) {
         self.isLoading = isLoading
-        self.loadingContent = loadingContent
+        self.loadingContent = loadingContent()
     }
     /// A loading view modifier to indicate network or general activity and progress
     ///
@@ -64,7 +64,7 @@ public struct LoadingModifier<LoadingContent: View>: ViewModifier {
     ///
     public func body(content: Content) -> some View {
         if isLoading {
-            loadingContent()
+            loadingContent
                 .padding()
         } else {
             content

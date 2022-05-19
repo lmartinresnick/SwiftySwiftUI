@@ -135,3 +135,59 @@ extension View {
 }
 ```
 
+#### Loading View Modifier
+
+- Use a `@State` property to display a loading view
+
+```swift
+@State private var fetchingAPI: Bool = true
+VStack {
+    AsyncImage(url: viewModel.url)
+}
+.loadingStyle(state: fetchingAPI) {
+    CustomLoadingView()
+}
+```
+
+```swift
+private let isLoading: Bool
+/// View to show when `isLoading = true`
+private let loadingContent: () -> LoadingContent
+/// Initializer to set properties
+init(state isLoading: Bool, loadingContent: @escaping () -> LoadingContent) {
+    self.isLoading = isLoading
+    self.loadingContent = loadingContent
+}
+
+func body(content: Content) -> some View {
+    if isLoading {
+        loadingContent()
+            .padding()
+    } else {
+        content
+    }
+}
+```
+
+#### BottomSheet
+
+- Customizable modal presented from the bottom of the screen
+ - Note* Interacts the same way as `.sheet`, i.e. use a `@State` boolean to show `BottomSheet`
+
+```swift
+@State private var showBottomSheet: Bool = false
+var body: some View {
+    VStack {
+        Text("Let's show a bottom sheet")
+        Button("Tap me to show a bottom sheet") {
+            showBottomSheet.toggle()
+        }
+    }
+    .bottomSheet(isPresented: showBottomSheet, height: .half) {
+        CustomBottomSheetView()
+    }
+}
+```
+
+
+
