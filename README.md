@@ -156,7 +156,7 @@ var body: some View {
 /// Boolean to show loading view
 private let isLoading: Bool
 /// View to show when `isLoading = true`
-private let loadingContent: () -> LoadingContent
+private let loadingContent: LoadingContent
 /// Initializer to set properties
 init(state isLoading: Bool, @ViewBuilder loadingContent: () -> LoadingContent) {
     self.isLoading = isLoading
@@ -176,7 +176,7 @@ func body(content: Content) -> some View {
 #### BottomSheet
 
 - Customizable modal presented from the bottom of the screen
- - Note* Interacts the same way as `.sheet`, i.e. use a `@State` boolean to show `BottomSheet`
+- Interacts the same way as `.sheet`, i.e. use a `@State` boolean to show `BottomSheet`
 
 ```swift
 @State private var showBottomSheet: Bool = false
