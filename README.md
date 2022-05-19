@@ -21,20 +21,20 @@ The preferred way of installing SwiftySwiftUI is via the [Swift Package Manager]
 
 ## Usage
 
-### `NavigationView` Wrapper
+#### NavigationView Wrapper
 
 - Instantly embed your `View` in `NavigationView`
 
 ```swift
-    VStack {
-        List {
-            NavigationLink("Purple", destination: ColorDetail(color: .purple))
-            NavigationLink("Pink", destination: ColorDetail(color: .pink))
-            NavigationLink("Orange", destination: ColorDetail(color: .orange))
-        }
-        .navigationTitle("Colors")
+VStack {
+    List {
+        NavigationLink("Purple", destination: ColorDetail(color: .purple))
+        NavigationLink("Pink", destination: ColorDetail(color: .pink))
+        NavigationLink("Orange", destination: ColorDetail(color: .orange))
     }
-    .embedInNavigationView()
+    .navigationTitle("Colors")
+}
+.embedInNavigationView()
 ```
 
 ```swift
@@ -45,15 +45,15 @@ extension View {
 }
 ```
 
-### `AnyView` Wrapper
+#### `AnyView` Wrapper
 
 - Instantly "erase" your `View` to `AnyView`
 
 ```swift
-    VStack {
-        Text("Erase to AnyView")
-    }
-    .eraseToAnyView()
+VStack {
+    Text("Erase to AnyView")
+}
+.eraseToAnyView()
 ```
 
 ```swift
