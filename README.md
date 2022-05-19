@@ -116,11 +116,11 @@ extension View {
 - Use an `if` condition to show/hide a view modifier
 
 ```swift
-    Text("Error message!")
-        .isHidden(false)
+Text("Error message!")
+    .isHidden(false)
         
-    Text("Error message!")
-        .isHidden(true)
+Text("Error message!")
+    .isHidden(true)
 ```
 
 ```swift
