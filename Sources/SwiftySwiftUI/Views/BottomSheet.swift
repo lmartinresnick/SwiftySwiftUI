@@ -113,6 +113,11 @@ public struct BottomSheet<Content: View>: View {
                 .cornerRadius(topBarCornerRadius, corners: [.topLeft, .topRight])
                 .offset(y: calculateYOffsetForPresentedView(with: geometry))
             }
+            .gesture(
+                DragGesture()
+                    .onChanged(onChangedAction)
+                    .onEnded(onEndedAction)
+            )
         }
     }
     
@@ -138,11 +143,6 @@ public struct BottomSheet<Content: View>: View {
         }
         .frame(width: geometry.size.width, height: topBarHeight)
         .background(topBarBackgroundColor)
-        .gesture(
-            DragGesture()
-                .onChanged(onChangedAction)
-                .onEnded(onEndedAction)
-        )
     }
     
     // MARK: - Private methods
