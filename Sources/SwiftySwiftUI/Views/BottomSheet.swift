@@ -178,13 +178,13 @@ public struct BottomSheet<Content: View>: View {
     }
 }
 
-extension Animation {
-    public static func bottomSheetAnimation() -> Animation {
+public extension Animation {
+    static func bottomSheetAnimation() -> Animation {
         Animation.spring(response: 0.35, dampingFraction: 0.86, blendDuration: 0.25)
     }
 }
 
-extension View {
+public extension View {
     func bottomSheet<Content: View>(
         isPresented: Binding<Bool>,
         height: BottomSheetHeight,
