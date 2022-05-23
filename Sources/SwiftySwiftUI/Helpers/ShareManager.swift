@@ -24,11 +24,11 @@
 import UIKit
 // swiftlint:disable line_length
 public protocol ActivitySharing {
-    func shareWithActivityController(image: UIImage?, text: String?, url: URL?)
+    static func shareWithActivityController(image: UIImage?, text: String?, url: URL?)
 }
 
 public struct ShareManager: ActivitySharing {
-    public func shareWithActivityController(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
+    public static func shareWithActivityController(image: UIImage? = nil, text: String? = nil, url: URL? = nil) {
         var activityItems: [Any] = []
         
         activityItems.appendIfNotNil(text)

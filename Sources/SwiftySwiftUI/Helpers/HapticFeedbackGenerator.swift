@@ -24,7 +24,7 @@
 import UIKit
 
 public protocol ImpactGenerator {
-    func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle)
+    static func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle)
 }
 // swiftlint:disable line_length
 public struct HapticFeedbackGenerator: ImpactGenerator {
@@ -40,7 +40,7 @@ public struct HapticFeedbackGenerator: ImpactGenerator {
     ///
     ///     HapticFeedbackGenerator.impactOccurred(with: .light)
     ///
-    public func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
+    public static func impactOccurred(with style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
         UIImpactFeedbackGenerator(style: style).impactOccurred()
     }
 }
