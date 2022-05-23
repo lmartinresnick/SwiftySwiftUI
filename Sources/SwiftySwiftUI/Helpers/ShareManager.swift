@@ -36,6 +36,6 @@ public struct ShareManager: ActivitySharing {
         activityItems.appendIfNotNil(image)
         
         let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        UIApplication.getTopViewController()?.present(activityVC, animated: true, completion: nil)
+        UIApplication.getRootViewController()?.present(activityVC, animated: true, completion: nil)
     }
 }
