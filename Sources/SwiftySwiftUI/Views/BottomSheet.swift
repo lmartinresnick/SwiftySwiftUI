@@ -31,20 +31,18 @@ public enum BottomSheetHeight {
     case threeQuarter
     case custom(height: CGFloat)
     
-    private let screenHeight = UIScreen.main.bounds.height
-    
     var value: CGFloat {
         switch self {
         case .quarter:
-            return screenHeight / 4
+            return UIScreen.main.bounds.height / 4
         case .oneThird:
-            return screenHeight * (1/3)
+            return UIScreen.main.bounds.height * (1/3)
         case .half:
-            return screenHeight / 2
+            return UIScreen.main.bounds.height / 2
         case .twoThirds:
-            return screenHeight * (2/3)
+            return UIScreen.main.bounds.height * (2/3)
         case .threeQuarter:
-            return screenHeight * 0.75
+            return UIScreen.main.bounds.height * 0.75
         case .custom(let height):
             return height
         }
