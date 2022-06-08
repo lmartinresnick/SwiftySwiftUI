@@ -97,7 +97,7 @@ public struct BottomSheet<Content: View>: View {
     
     public var body: some View {
         GeometryReader { geometry in
-            ZStack {
+            ZStack(alignment: .top) {
                 lightGrayBaseOverlay
                 VStack(spacing: 0) {
 //                    buildTopBar(with: geometry)
