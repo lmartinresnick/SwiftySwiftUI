@@ -100,20 +100,12 @@ public struct BottomSheet<Content: View>: View {
             ZStack {
                 lightGrayBaseOverlay
                 VStack(spacing: 0) {
-//                    buildTopBar(with: geometry)
-//                    VStack(spacing: -8) {
-//                        Spacer()
-//                        content
-//                            .padding(.bottom, geometry.safeAreaInsets.bottom)
-//                        Spacer()
-//                    }
                     if showTopIndicator {
                         buildTopBar(with: geometry)
                     }
                     
                     content
                         .padding(.bottom, geometry.safeAreaInsets.bottom)
-                    //Spacer() - min(controls.draggedOffset * 2, 0)
                 }
                 .frame(height: height.value - min(controls.draggedOffset * 2, 0))
                 .background(contentBackgroundColor)
@@ -146,7 +138,6 @@ public struct BottomSheet<Content: View>: View {
             RoundedRectangle(cornerRadius: 6)
                 .fill(Color.secondary)
                 .frame(width: 40, height: 6)
-                // .opacity(showTopIndicator ? 1 : 0)
         }
         .frame(width: geometry.size.width, height: topBarHeight)
         .background(topBarBackgroundColor)
