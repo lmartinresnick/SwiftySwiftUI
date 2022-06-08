@@ -119,6 +119,7 @@ public struct BottomSheet<Content: View>: View {
                 .background(contentBackgroundColor)
                 .cornerRadius(topBarCornerRadius, corners: [.topLeft, .topRight])
                 .offset(y: calculateYOffsetForPresentedView(with: geometry))
+                .edgesIgnoringSafeArea(.bottom)
             }
             .gesture(
                 DragGesture()
