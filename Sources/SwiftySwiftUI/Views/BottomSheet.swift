@@ -134,6 +134,7 @@ public struct BottomSheet<Content: View>: View {
             .edgesIgnoringSafeArea(.all)
             .onTapGesture {
                 withAnimation(animation) {
+                    UIApplication.shared.dismissKeyboard()
                     isPresented = false
                 }
             }
