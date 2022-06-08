@@ -97,7 +97,7 @@ public struct BottomSheet<Content: View>: View {
     
     public var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .top) {
+            ZStack {
                 lightGrayBaseOverlay
                 VStack(spacing: 0) {
 //                    buildTopBar(with: geometry)
@@ -113,6 +113,7 @@ public struct BottomSheet<Content: View>: View {
                     
                     content
                         .padding(.bottom, geometry.safeAreaInsets.bottom)
+                    Spacer()
                 }
                 .frame(height: height.value - min(controls.draggedOffset * 2, 0))
                 .background(contentBackgroundColor)
