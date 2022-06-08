@@ -113,9 +113,9 @@ public struct BottomSheet<Content: View>: View {
                     
                     content
                         .padding(.bottom, geometry.safeAreaInsets.bottom)
-                    Spacer()
+                    //Spacer()
                 }
-                .frame(height: height.value - min(controls.draggedOffset * 2, 0))
+                //.frame(height: height.value - min(controls.draggedOffset * 2, 0))
                 .background(contentBackgroundColor)
                 .cornerRadius(topBarCornerRadius, corners: [.topLeft, .topRight])
                 .offset(y: calculateYOffsetForPresentedView(with: geometry))
