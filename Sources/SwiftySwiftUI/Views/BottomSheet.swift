@@ -24,19 +24,27 @@
 import SwiftUI
 // swiftlint:disable line_length
 public enum BottomSheetHeight {
-    case half
     case quarter
+    case oneThird
+    case half
+    case twoThirds
     case threeQuarter
     case custom(height: CGFloat)
     
+    private let screenHeight = UIScreen.main.bounds.height
+    
     var value: CGFloat {
         switch self {
-        case .half:
-            return UIScreen.main.bounds.height / 2
         case .quarter:
-            return UIScreen.main.bounds.height / 4
+            return screenHeight / 4
+        case .oneThird:
+            return screenHeight * (1/3)
+        case .half:
+            return screenHeight / 2
+        case .twoThirds:
+            return screenHeight * (2/3)
         case .threeQuarter:
-            return UIScreen.main.bounds.height * 0.75
+            return screenHeight * 0.75
         case .custom(let height):
             return height
         }
