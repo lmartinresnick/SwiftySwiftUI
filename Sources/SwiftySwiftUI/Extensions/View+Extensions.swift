@@ -39,9 +39,14 @@ public extension View {
     ///     }
     ///     .embedInNavigationView()
     ///
-    ///
-    func embedInNavigationView() -> some View {
-        NavigationView { self }
+
+    @ViewBuilder
+    func embedInNavigation() -> some View {
+        if #available(iOS 16, *) {
+            NavigationStack { self }
+        } else {
+            NavigationView { self }
+        }
     }
     /// An `AnyView` wrapper
     /// Transform any `View` to `AnyView` instantly
